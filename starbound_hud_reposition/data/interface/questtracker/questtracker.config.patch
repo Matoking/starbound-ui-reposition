@@ -1,0 +1,8 @@
+[
+    {
+        // Default [-25, -5]
+        "op": "replace",
+        "path": "/paneLayout/panefeature/offset",
+        "value": [{{ -25 - (RIGHT // 2) }}, {{ -5 - (TOP // 2) }}]
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "op": "replace",
+        "path": "/mainBar/size",
+        "value": [{{ (RIGHT // 2) + 25 }}, {{ (TOP // 2) + 125 }}]
+    },
+    {
+        "op": "replace",
+        "path": "/message/textContainerOffset",
+        "value": [0, {{ -12 + (BOTTOM // 2) }}]
+    }
+]

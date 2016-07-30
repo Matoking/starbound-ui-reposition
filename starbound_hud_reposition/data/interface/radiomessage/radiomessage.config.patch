@@ -1,0 +1,7 @@
+[
+    {
+        "op": "replace",
+        "path": "/paneLayout/panefeature/offset",
+        "value": [{{ 5 + (LEFT // 2) }}, {{ 86 + (BOTTOM // 2) }}]
+    }
+]

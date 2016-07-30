@@ -1,0 +1,32 @@
+[
+    {
+        "op": "replace",
+        "path": "/mainMenuButtons/0/offset",
+        "value": [{{ (LEFT // 2) + 0}}, {{ (BOTTOM // 2) + 85 }}]
+    },
+    {
+        "op": "replace",
+        "path": "/mainMenuButtons/1/offset",
+        "value": [{{ (LEFT // 2) + 0}}, {{ (BOTTOM // 2) + 60 }}]
+    },
+    {
+        "op": "replace",
+        "path": "/mainMenuButtons/2/offset",
+        "value": [{{ (LEFT // 2) + 0}}, {{ (BOTTOM // 2) + 35 }}]
+    },
+    {
+        "op": "replace",
+        "path": "/mainMenuButtons/3/offset",
+        "value": [{{ (LEFT // 2) + 0}}, {{ (BOTTOM // 2) + 10 }}]
+    },
+    {
+        "op": "replace",
+        "path": "/mainMenuButtons/4/offset",
+        "value": [{{ (LEFT // 2) + 0}}, {{ (BOTTOM // 2) + 10 }}]
+    },
+    {
+        "op": "replace",
+        "path": "/mainMenuButtons/5/offset",
+        "value": [{{ -22 - (RIGHT // 2)}}, {{ (BOTTOM // 2) + 2 }}]
+    }
+]
