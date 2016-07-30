@@ -23,7 +23,7 @@ def get_files():
             # Turn the absolute path into a relative path
             file_path = file_path.replace(current_path, "")
             file_path = file_path.replace("/data/", "")
-            file_path = os.path.join("hud_repositioning", file_path)
+            file_path = os.path.join("hud_reposition", file_path)
             files[file_path] = content
 
     return files
