@@ -2,11 +2,11 @@
 import argparse
 import os
 
-from starbound_hud_reposition.patch import create_mod
+from starbound_ui_reposition.patch import create_mod
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Create a Starbound HUD element repositioning mod file")
+        description="Create a Starbound UI reposition mod file")
 
     parser.add_argument(
         'top',
@@ -28,7 +28,7 @@ def main():
         "--output",
         default=os.path.join(
             os.path.dirname(__file__),
-            "hud_reposition.zip"),
+            "ui_reposition.zip"),
         help="Path for the generated ZIP file containing the mod"
     )
 

@@ -1,0 +1,150 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load staticfiles %}
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="description" content="">
+    	<meta name="author" content="Matoking">
+
+    	<title>Starbound UI Reposition</title>
+
+    	<!-- Bootstrap core CSS -->
+    	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+    		<div class="row">
+                <div class="col-md-12">
+        			<div class="page-header">
+                        <h1>Starbound UI Reposition mod</h1>
+                    </div>
+                    <p>Want to play Starbound on a multi-monitor setup but want to keep the UI elements together on one screen? Then this mod is for you.</p>
+                    <hr>
+                    <h3>Step 1. Download the mod</h3>
+                    <p>Fill the details below and press "Download mod" to download a ready-to-use mod you can extract into Starbound's mod directory.</p>
+                    <script>
+                    // Screen presets
+                    var SCREEN_PRESETS = [];
+                    {% for preset in presets %}
+                    SCREEN_PRESETS.push({
+                        "top": {{ preset.values.0 }},
+                        "right": {{ preset.values.1 }},
+                        "bottom": {{ preset.values.2 }},
+                        "left": {{ preset.values.3 }}
+                    });
+                    {% endfor %}
+                    </script>
+                    <form class="form-horizontal" method="post" action="{% url "index" %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="id_preset">Preset</label>
+                            <div class="col-md-4">
+                                <select id="selected_preset" class="form-control" onchange="changedPreset()">
+                                    {% for preset in presets %}
+                                    <option value="{{ forloop.counter0 }}">{{ preset.name }}</option>
+                                    {% endfor %}
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-2"></span>
+                            <p>or choose the margins manually</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="id_top">Top</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="id_top" name="top" required="required" value="0" onchange="changedValues()"/>
+                                <span class="help-block">
+                                    Margin for the upper side of the screen in pixels
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="id_right">Right</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="id_right" name="right" required="required" value="1920" onchange="changedValues()"/>
+                                <span class="help-block">
+                                    Margin for the right side of the screen in pixels
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="id_bottom">Bottom</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="id_bottom" name="bottom" required="required" value="0" onchange="changedValues()"/>
+                                <span class="help-block">
+                                    Margin for the bottom side of the screen in pixels
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="id_left">Left</label>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="id_left" name="left" required="required" value="1920" onchange="changedValues()"/>
+                                <span class="help-block">
+                                    Margin for the left side of the screen in pixels
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1"></span>
+                            <input class="btn btn-success" id="download_mod" type="submit" value="Download mod"/>
+                        </div>
+                        <div class="alert alert-info">
+                            <a role="button" data-toggle="collapse" href="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo">Don't know what numbers to use?</a>
+                            <div id="collapseInfo" class="panel-collapse collapse" role="tabpanel">
+                                <p>The mod repositions UI elements by moving them by your provided margin values; much like the margins surrounding the text in a book.</p>
+                                <hr>
+                                <p><b>For example, if you have a setup of three 1080p monitors, the HUD elements are normally on each border of the game area:</b></p>
+                                <br>
+                                <img class="img-responsive" src="{% static "img/1080p-example-1.png" %}"/>
+                                <br>
+                                <p>To "push" the UI elements to the screen on the center, we'll move the elements by 1920 pixels on both <i>left</i> and <i>right</i> side to make up for the 1920 pixel gap on both sides.</p>
+                                <br>
+                                <img class="img-responsive" src="{% static "img/1080p-example-2.png" %}"/>
+                                <br>
+                                <p><i>Top</i> and <i>bottom</i> values are usually not necessary unless your center monitor is higher or lower than the surrounding screens (for example, you have a center 1080p monitor surrounded by 1440p monitors).
+                            </div>
+                        </div>
+                    </form>
+                    <script>
+                    function changedPreset() {
+                        var selected = $("#selected_preset").val();
+                        console.log(selected);
+
+                        if (parseInt(selected) !== NaN) {
+                            var preset = SCREEN_PRESETS[parseInt(selected)];
+
+                            $("#id_top").val(preset["top"]);
+                            $("#id_right").val(preset["right"]);
+                            $("#id_bottom").val(preset["bottom"]);
+                            $("#id_left").val(preset["left"]);
+                        }
+                    }
+
+                    function changedValues() {
+                        $("#selected_preset").val("custom");
+                    }
+                    </script>
+                    <hr>
+                    <h3>Step 2. Install the mod</h3>
+                    <p>Copy the mod contained in the ZIP to Starbound's mod directory.</p>
+                    <div class="alert alert-info">
+                        <strong>Don't know where to find the directory?</strong>
+                        <p>If you're playing the game on Steam, right-click the game in your Steam library, select <i>Properties</i>, then select <i>Local files</i> tab and finally click <i>Browse local files...</i>. There should be directory named <i>mods</i> inside; extract the mod inside.</p>
+                    </div>
+                    <hr>
+                    <h3>Step 3. Enjoy the game!</h3>
+                    <p>Just start the game and the mod should automatically work.</p>
+                    <p><b>Note that since the HUD positioning can't be adjusted during gameplay, you'll have to redownload the mod with new values if your setup changes.</b></p>
+                </div>
+    		</div>
+    	</div>
+        <script src="{% static "js/jquery.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+    </body>
+</html>

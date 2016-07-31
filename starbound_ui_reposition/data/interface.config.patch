@@ -2,7 +2,7 @@
     {
         "op": "replace",
         "path": "/mainBar/size",
-        "value": [{{ (RIGHT // 2) + 25 }}, {{ (TOP // 2) + 125 }}]
+        "value": [{{ (RIGHT // 2) + 22 }}, {{ (TOP // 2) + 125 }}]
     },
     {
         "op": "replace",
