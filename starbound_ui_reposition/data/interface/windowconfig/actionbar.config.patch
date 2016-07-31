@@ -3,6 +3,6 @@
         // Default [0, 0]
         "op": "add",
         "path": "/paneLayout/panefeature/offset",
-        "value": [{{ (LEFT // 2) + 0 }}, {{ 0 - (TOP // 2) }}]
+        "value": [0, {{ 0 - (TOP // 2) }}]
     }
 ]

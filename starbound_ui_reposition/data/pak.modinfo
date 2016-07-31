@@ -1,5 +1,5 @@
 {
-"name" : "HUD Repositioning",
+"name" : "UI Repositioning",
 "version" : "v0.1",
 "path" : ".",
 "dependencies" : []

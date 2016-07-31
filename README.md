@@ -12,6 +12,12 @@ pip install -r requirements.txt
 
 You should now be able to run *create_mod.py*, which creates the mod file.
 
+You can also use the web application which has an easy-to-use interface for online users. The web application is built using Django; a local development server can be launched using the command
+
+```
+python manage.py runserver 8000
+```
+
 # Using the mod
 Run the 'create_mod.py' to create the mod as a ZIP file. The script takes four parameters (top, right, bottom, left) which correspond to the amount of padding to the sides of the window resolution used by the game.
 

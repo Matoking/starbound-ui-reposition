@@ -93,3 +93,6 @@ ENV/
 
 # Generated game mod
 hud_reposition.zip
+
+# SQLite
+db.sqlite3

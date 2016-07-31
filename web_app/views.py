@@ -5,6 +5,8 @@ from forms import DownloadModForm
 
 from starbound_ui_reposition.patch import create_mod
 
+from version import VERSION
+
 
 SCREEN_PRESETS = [
     {
@@ -40,5 +42,6 @@ def index(request):
         return response
 
     return render(request, "index.html", {
+        "version": VERSION,
         "presets": SCREEN_PRESETS
     })
